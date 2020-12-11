@@ -15,7 +15,9 @@ router.get("/:id", async (req, res) => {
 
 // GET ALL ACTIVITIES
 router.get("/", async (req, res) => {
-    let activities = await ActivityModel.findAll();
+    let activities = await ActivityModel.findAll({
+        include: LocationModel,
+    });
     res.json({ activities })
 })
 
