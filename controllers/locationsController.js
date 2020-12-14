@@ -23,7 +23,9 @@ router.get("/:id", async (req, res) => {
   
 // GET ALL LOCATIONS
 router.get("/", async (req, res) => {
-    let locations = await LocationModel.findAll();
+    let locations = await LocationModel.findAll({
+        include: ActivityModel,
+    });
     res.json({ locations })
 });
   
