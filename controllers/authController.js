@@ -37,7 +37,11 @@ router.post("/signup", (req, res) => {
           console.log(token);
           // res.cookie("jwt", token); // SEND A NEW COOKIE TO THE BROWSER TO STORE TOKEN
           // res.redirect(`/users/profile/${newUser.id}`);
-          res.json({ token });
+          res.json({
+            token: token,
+            username: newUser.username,
+            id: newUser.id,
+          });
         })
         .catch((err) => {
           console.log(err);
@@ -72,8 +76,7 @@ router.post("/login", (req, res) => {
           // res.redirect(`/users/profile/${foundUser.id}`);
           res.json({
             token: token,
-            id: foundUser.id,
-            admin: foundUser.admin
+            user: foundUser
           });
         } else {
           return res.sendStatus(400);
