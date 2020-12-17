@@ -37,6 +37,7 @@ app.use("/api/auth", require("./controllers/authController.js"));
 app.use("/api/users", require("./controllers/usersController.js"));
 app.use("/api/activities", require("./controllers/activitiesController.js"));
 app.use("/api/locations", require("./controllers/locationsController.js"));
+app.use("/api/trails", require("./controllers/trailsController.js"));
 
 app.listen(process.env.PORT, () => {
   console.log("Nodemon listening");
