@@ -104,4 +104,24 @@ router.post("/:id/addactivity", async (req, res) => {
 });
 
 
+// REMOVE LOCATION FROM ACTIVITY
+router.delete("/:id/unbind", async (req, res) => {
+    let location = await LocationModel.findByPk(req.params.id);
+    let activity = await ActivityModel.findByPk(req.body.id);
+    if (location && activity) {
+        await ActivityLocation.destroy({
+            activityId: req.body.id,
+            locationId: req.params.id
+        })
+        res.json({
+            message: `Record added successfully.`
+        });
+    } else {
+        res.json({
+            message: `Location with id ${req.params.id} or Activity with id ${req.body.id} not found`,
+        });
+    }
+});
+
+
 module.exports = router;

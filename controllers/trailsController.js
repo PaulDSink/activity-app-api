@@ -7,7 +7,7 @@ const TrailModel = require("../models").Trail;
 
 
   
-// DELETE A LOCATION
+// DELETE A TRAIL
 router.delete("/:id", async (req, res) => {
 await TrailModel.destroy({
     where: {
