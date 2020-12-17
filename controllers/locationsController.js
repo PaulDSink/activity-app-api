@@ -110,8 +110,10 @@ router.delete("/:id/unbind", async (req, res) => {
     let activity = await ActivityModel.findByPk(req.body.id);
     if (location && activity) {
         await ActivityLocation.destroy({
-            activityId: req.body.id,
-            locationId: req.params.id
+            where: {
+                activityId: req.body.id,
+                locationId: req.params.id
+            }
         })
         res.json({
             message: `Record added successfully.`
